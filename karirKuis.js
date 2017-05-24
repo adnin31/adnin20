@@ -1,9 +1,9 @@
 var career = {
-     salam :'Selamat datang di Career games Masukan Nama Anda',
+     salam :'Selamat datang di Kuis Karir Masukan Nama Anda',
     jobs : ['guru','programmer','dokter'],
     congratQ : {
       teachQ : 'Mengajar merupakan hal baik',
-      progQ : 'Menjadi developer adalah pilihanmu',
+      progQ : 'Menjadi developer adalah masa depan mu',
       doctorQ :'Menyembuhkan orang adalah passionmu',
     },
 
@@ -17,14 +17,17 @@ if (nama == ''){
   nama = prompt(career.salam);
 }
 if(karir == ''){
-  karir = prompt("Pilih karir anda untuk memulai kuis ini \n1.guru\n2.programmer\n3.dokter ");
-
+  karir = prompt("Pilih karir anda untuk memulai kuis ini : \n -guru\n- programmer\n- dokter ");
+  karir = karir.toLowerCase();
   if(karir == career.jobs[0]) {
     guru()
   }else if (karir == career.jobs[1]){
     programmer()
   }else if (karir == career.jobs[2]){
     dokter();
+  }
+  else{
+    console.log("Maaf "+nama+" karir anda belum ada di sistem kami!!")
   }
 }
 
@@ -39,11 +42,11 @@ function dokter(){
     var indexD = Math.floor((Math.random() *5) + 0);
     var flag =0;
     if (jawaban == ''|| jawaban != '') {
-    jawaban = prompt("Ada berapa bagian di indera "
+    jawaban = prompt("Jika anda dokter \n Ada berapa bagian di indera ?"
     +organManusia[indexD][0]+" ?");
 
       if(jawaban == organManusia[indexD][1]){
-        console.log("Selamat"+nama+"Anda berhasil menjadi dokter ");
+        console.log("Selamat"+nama+"Anda berhasil menjadi "+career.jobs[2]);
         console.log(career.congratQ.doctorQ);
       } else {
           console.log("Maaf"+nama+"Anda tidak berhasil menjadi dokter");
@@ -60,13 +63,12 @@ function guru() {
   for (i=1; i< 4 ; i++){
         pertanyaan = Math.floor((Math.random() * 10) + 1);
         tampung.push(pertanyaan);
-        //console.log(pertanyaan);
         hasil += pertanyaan;
     }
    print = tampung.join(" + ");
-   jawaban = prompt("Jawab pertanyan berikut: " + print);
+   jawaban = prompt("Jika anda guru anda pasti dapat berhitung maka dari itu\nJumlahkan deret berikut: " + print);
     if(jawaban == hasil){
-      console.log("Selamat"+nama+"Anda berhasil menjadi Guru ");
+      console.log("Selamat "+nama+" Anda berhasil menjadi "+career.jobs[0]);
       console.log(career.congratQ.teachQ);
    } else {
      console.log("Maaf"+nama+"mungkin profesi guru tidak cocok untuk anda");
@@ -90,14 +92,14 @@ function programmer(){
         else {
           ganjil++
         }
-    console.log ("angka = " +acak);
  }
   print = tampung.join(" ");
-  jawaban = prompt("Jawab pertanyan berikut: \n" + print +"\nBerapa hasil dari Angka Genap dikalikan Ganjil dari deret diatas");
+  jawaban = prompt("Jika anda ingin menjadi programmer\nJawab pertanyan berikut: \n  " + print +"\nBerapa hasil dari JUMLAH Angka Genap dikalikan dengan JUMLAH Angka Ganjil dari deret diatas");
   if((genap*ganjil)==jawaban){
-    console.log("Selamat " +nama+" anda dapat menjadi programmer masa depan");
-    console.log(career.progQ);
+    console.log("Selamat " +nama+" anda dapat menjadi "+career.jobs[1]+ " masa depan");
+    console.log(career.congratQ.progQ);
+  }else{
+    console.log("Mungkin Programmer bukan pilihan yang tepat ");
   }
-
-
+  
 }
